@@ -1,7 +1,9 @@
 var tape = require('tape'),
-    kirbyDance = require('..'),
-    dance
-;
+    dancer = require('..'),
+    shruggies = require('../shruggies'),
+    shruggieDance = dancer(shruggies),
+    kirbies = require('../kirbies'),
+    kirbyDance = dancer(kirbies);
 
 tape('kirby-dance', function (t) {
     t.test('works with a few normal numbers', function (t) {
@@ -28,16 +30,9 @@ tape('kirby-dance', function (t) {
         t.end();
     });
 
-    t.test('explodes with not a number', function (t) {
-        var error;
-
-        try {
-            kirbyDance('kirby');
-        } catch (err) {
-            error = err;
-        }
-
-        t.error(error);
+    t.test('does not dance with not a number', function (t) {
+        dance = kirbyDance('kirby');
+        t.equal(dance, "");
         t.end();
     });
 
@@ -50,6 +45,18 @@ tape('kirby-dance', function (t) {
 
         dance = kirbyDance(-12);
         t.equal(dance, "(>'.')> <('.'<) (>'.')> <('.'<) (>'.')> <('.'<) (>'.')> <('.'<) (>'.')> <('.'<) (>'.')> <('.'<)");
+        t.end();
+    });
+    
+    t.test('works with a different set of moves', function (t) {
+        dance = shruggieDance(3);
+        t.equal(dance, "¯\\_(ツ)_/¯ _/¯(ツ)¯\\_ ¯\\_(ツ)¯\\_");
+
+        dance = shruggieDance(5);
+        t.equal(dance, "¯\\_(ツ)_/¯ _/¯(ツ)¯\\_ ¯\\_(ツ)¯\\_ _/¯(ツ)_/¯ ¯\\_(ツ)_/¯");
+
+        dance = shruggieDance(-5);
+        t.equal(dance, "_/¯(ツ)_/¯ ¯\\_(ツ)¯\\_ _/¯(ツ)¯\\_ ¯\\_(ツ)_/¯ _/¯(ツ)_/¯");
         t.end();
     });
 })

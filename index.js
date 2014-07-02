@@ -1,28 +1,31 @@
-var kirbies = require('./kirbies'),
-    totalKirbies
-;
+module.exports = dancer;
 
-totalKirbies = kirbies.length;
+/*
+ * Create a dancer who knows an array of moves. The returned dancer is a function
+ * that returns an ascii string cycling through a provided number of moves.
+ * Negative lengths will cycle through the dance moves in reverse order.
+ */
+function dancer (moves) {
+    return function (length) {
+        var step = 1,
+            begin = 0,
+            length = (typeof length === 'number' ? length || 0 : 0);
+            end = length;
 
-function kirbyDance (amount) {
-    var dance,
-        ind
-    ;
+        if (length < 0) {
+            // go through moves backwards, always starting with last move
+            step = -1;
+            length = length * -1;
+            begin = length + moves.length - 1 - (length % moves.length);
+            end = begin - length;
+        }
 
-    dance = [];
-    ind = 0;
+        dance = [];
 
-    if (amount < 0) {
-        ind = 1;
-        amount = -amount + 1;
+        for (var i = begin; i !== end; i += step) {
+            dance.push(moves[i % moves.length]);
+        }
+
+        return dance.join(' ');
     }
-
-    for (; ind < amount; ind += 1) {
-        var mod = ind % totalKirbies;
-        dance.push(kirbies[mod]);
-    }
-
-    return dance.join(' ');
 }
-
-module.exports = kirbyDance;

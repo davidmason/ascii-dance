@@ -1,28 +1,27 @@
 {
-  "name": "kirby-dance",
-  "description": "<('.'<) (>'.')> <('.'<) (>'.')>",
-  "version": "0.1.0",
-  "author": "Nizar Khalife Iglesas <khalifenizar@gmail.com>",
+  "name": "ascii-dance",
+  "description": "¯\\_(ツ)_/¯ _/¯(ツ)¯\\_ ¯\\_(ツ)¯\\_ _/¯(ツ)_/¯",
+  "version": "1.0.0",
+  "author": "https://github.com/davidmason",
   "bugs": {
-    "url": "https://github.com/khalifenizar/kirby-dance/issues"
+    "url": "https://github.com/davidmason/ascii-dance/issues"
   },
   "devDependencies": {
     "tape": "^2.13.3"
   },
-  "homepage": "https://github.com/khalifenizar/kirby-dance",
+  "homepage": "https://github.com/davidmason/ascii-dance",
   "keywords": [
-    "kirby",
+    "ascii",
     "dance",
-    "kirbies",
     "dancing"
   ],
   "license": "ISC",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/khalifenizar/kirby-dance.git"
+    "url": "https://github.com/davidmason/ascii-dance.git"
   },
   "scripts": {
-    "test": "node tests/kirby-dance.js"
+    "test": "node tests/ascii-dance.js"
   }
 }
